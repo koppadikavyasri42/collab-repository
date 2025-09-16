@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>World Culture & Tradition</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h1 {
+      color: #2a5d84;
+    }
+    select {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .culture-info {
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .culture-info h2 {
+      margin-top: 0;
+      color: #1b3a57;
+    }
+    .culture-info p {
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Explore Culture and Tradition Around the World</h1>
+    <label for="country-select">Select a Country:</label><br />
+    <select id="country-select">
+      <option value="" disabled selected>-- Choose a Country --</option>
+      <option value="japan">Japan</option>
+      <option value="india">India</option>
+      <option value="brazil">Brazil</option>
+      <option value="egypt">Egypt</option>
+      <option value="france">France</option>
+    </select>
+  </header>
+
+  <section class="culture-info" id="culture-info">
+    <h2>Welcome!</h2>
+    <p>Select a country from above to learn about its culture and traditions.</p>
+  </section>
+
+  <script>
+    const cultures = {
+      japan: {
+        name: "Japan",
+        description: "Japan is known for its rich traditions such as tea ceremonies, ikebana (flower arranging), and traditional clothing like kimonos. The culture emphasizes respect, harmony, and seasonal celebrations like cherry blossom viewing (Hanami).",
+      },
+      india: {
+        name: "India",
+        description: "India's culture is incredibly diverse, featuring festivals like Diwali and Holi, traditional dances like Bharatanatyam, and spiritual practices rooted in Hinduism, Buddhism, and other religions. Indian cuisine and colorful clothing like sarees are also iconic.",
+      },
+      brazil: {
+        name: "Brazil",
+        description: "Brazilian culture is vibrant and lively, famous for its Carnival festival, samba music and dance, and passion for football (soccer). The culture reflects a mix of indigenous, African, and Portuguese influences.",
+      },
+      egypt: {
+        name: "Egypt",
+        description: "Egypt boasts an ancient culture with iconic traditions like hieroglyphic writing, the construction of pyramids, and festivals celebrating the Nile River. Egyptian cuisine and folk music are essential parts of its identity.",
+      },
+      france: {
+        name: "France",
+        description: "France is renowned for its art, fashion, and culinary traditions such as wine and cheese. French culture also includes historic festivals, classical music, and a deep appreciation for literature and philosophy.",
+      }
+    };
+
+    const selectElement = document.getElementById('country-select');
+    const infoSection = document.getElementById('culture-info');
+
+    selectElement.addEventListener('change', (event) => {
+      const countryKey = event.target.value;
+      if(cultures[countryKey]) {
+        const { name, description } = cultures[countryKey];
+        infoSection.innerHTML = `
+          <h2>${name}</h2>
+          <p>${description}</p>
+        `;
+      } else {
+        infoSection.innerHTML = `
+          <h2>Welcome!</h2>
+          <p>Select a country from above to learn about its culture and traditions.</p>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
